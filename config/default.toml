@@ -1,0 +1,27 @@
+[gateway]
+host = "0.0.0.0"
+port = 8080
+log_level = "info"
+db_path = "/data/mcpgw.db"
+
+[gateway.rate_limit]
+enabled = true
+requests_per_second = 10.0
+burst = 20.0
+
+[[servers]]
+name = "example-mcp"
+url = "http://localhost:3000"
+enabled = true
+api_key = "sk-example-key-goes-here"
+auth_header = "Authorization"
+
+[[servers]]
+name = "disabled-server"
+url = "http://localhost:3001"
+enabled = false
+
+[[servers]]
+name = "second-mcp"
+url = "http://localhost:3002"
+enabled = true

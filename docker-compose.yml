@@ -1,0 +1,14 @@
+services:
+  gateway:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - MCPGW_CONFIG=/etc/mcpgw/config/default.toml
+      - MCPGW_MASTER_SECRET=${MCPGW_MASTER_SECRET:-changeme}
+    volumes:
+      - mcpgw_data:/data
+    restart: unless-stopped
+
+volumes:
+  mcpgw_data:
